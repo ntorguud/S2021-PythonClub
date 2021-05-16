@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, ClubType, Review
+from .models import Meeting, MeetingMinutes, Resource, Event
 
 # Create your views here.
 def index(request):
@@ -7,4 +7,4 @@ def index(request):
 
 def products(request):
     product_list = Product.objects.all()
-    return render(request, 'Club/products.html', {'products_list': product_list})
+    return render(request, 'Club/products.html', {'product_list': product_list})
