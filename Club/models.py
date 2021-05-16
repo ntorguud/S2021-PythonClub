@@ -16,7 +16,7 @@ class Meeting(models.Model):
     class Meta:
         db_table = 'Meeting'
 
-class MeetingMinutes(models.Model):
+class MeetingMinute(models.Model):
     meetingid = models.CharField(max_length=255)
     attendance = models.ManyToManyField(User, blank=True)
     minutestext = models.TextField()
@@ -25,7 +25,7 @@ class MeetingMinutes(models.Model):
         return self.meetingid
 
         class Meta:
-            db_table = 'MeetingMinutes'
+            db_table = 'MeetingMinute'
 
 class Resource(models.Model):
     resourcename = models.CharField(max_length=255)
