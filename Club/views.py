@@ -8,3 +8,8 @@ def index(request):
 def members(request):
     members_list = Meeting.objects.all()
     return render(request, 'Club/members.html', {'members_list': members_list})
+
+def resource(request):
+    resource_list = Resource.objects.all()
+    return render(request, 'Club/resource.html', {'resource_list': resource_list})
+
