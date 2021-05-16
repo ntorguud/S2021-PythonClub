@@ -18,9 +18,8 @@ class Meeting(models.Model):
 
 class MeetingMinutes(models.Model):
     meetingid = models.CharField(max_length=255)
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     attendance = models.ManyToManyField(User, blank=True)
-    minutestext = models.TextField(null=True,blank=True)
+    minutestext = models.TextField()
 
     def __str__(self):
         return self.meetingid
