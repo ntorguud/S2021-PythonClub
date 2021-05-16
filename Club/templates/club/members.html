@@ -1,9 +1,9 @@
 {% extends 'base.html'%}
 {% block content %}
-<h2>Products</h2>
+<h2>Members</h2>
 <ul>
-    {% for p in product_list %}
-    <li>{{ p.productname }}</li>
+    {% for m in members_list %}
+    <li>{{ m.members }}</li>
     {% endfor %}
 </ul>
 
