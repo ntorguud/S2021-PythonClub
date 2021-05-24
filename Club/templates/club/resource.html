@@ -3,7 +3,7 @@
 <h2>Resources</h2>
 <ul>
     {% for item in resource_list %}
-    <li><a href="{% url 'detail' id=item.id %}">{{item.meetingtitle}}</a></li>
+    <li>{{ item }}</li>
     {% endfor %}
 </ul>
 
