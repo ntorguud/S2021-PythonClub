@@ -20,7 +20,7 @@ def meeting(request):
 
 def meetingDetail(request, id):
     meeting = get_object_or_404(Meeting, pk=id)
-    return render(request, 'Club/meetingdetail.html', {'meeting' : meeting})
+    return render(request, 'Club/meetingdetail.html', {'meeting': meeting})
 
 
 
