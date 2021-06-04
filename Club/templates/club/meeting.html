@@ -2,8 +2,8 @@
 {% block content %}
 <h2>Meetings</h2>
 <ul>
-    {% for meeting in meeting_list %}
-    <li><a href="{% url 'detail' id=meeting.id %}">{{meeting.meeting_list}}</a></li>
+    {% for meeting in meetingtitle %}
+    <li><a href="{% url 'meetingdetail' id=meeting.id %}">{{meeting.meetingtitle}}</a></li>
     {% endfor %}
 </ul>
 
