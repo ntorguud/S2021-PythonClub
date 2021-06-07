@@ -10,6 +10,10 @@ class Meeting(models.Model):
     location = models.TextField(null=True, blank=True)
     agenda = models.TextField(null=True, blank=True)
 
+    def meetingdateEnd(self):
+        self.dateEnd=self.meetingdate 
+        return self.dateEnd
+
     def __str__(self):
         return self.meetingtitle
 
