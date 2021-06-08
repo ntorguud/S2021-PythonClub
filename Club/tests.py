@@ -1,7 +1,9 @@
+from Club.views import newMeeting
 from django.test import TestCase
 from .models import User
 from .models import Meeting, MeetingMinute, Resource, Event
 import datetime, time
+from .forms import MeetingForm
 
 # Create your tests here.
 class MeetingTest(TestCase):
@@ -15,9 +17,42 @@ class MeetingTest(TestCase):
 
     def test_tablename(self):
         self.assertEqual(str(Meeting.meta.db_table), 'meeting')
+
+class MeetingMinuteTest(TestCase):
+    def setUp(self):
+        self.type=MeetingMinute(typename='text')
+        self.user=User(username='Jenny')
+        self.meetingminute=MeetingMinute(meetingid='01', attendance='voluntary', minutestext='Welcome')
     
 class ResourceTest(TestCase):
     def setUp(self):
         self.type=Resource(typename='resources')
         self.user=User(userid='Jack')
         self.resource=Resource(resourcename='Python.org Community', resourcetype='url', resourceurl='https://www.python.org/community/', dateentered=datetime('06/07/2021'), description='support')
+
+class NewMeetingForm(TestCase):
+    #valid form data
+    def test_MeetingForm(self):
+        data={
+                'meetingtitle': 'Coding Club: Learn Python', 
+                'meetingdate': '6/08/2021', 
+                'user': 'Naran', 
+                'meetingtime': '12.00pm', 
+                'location': 'https://www.youtube.com/watch?v=8leDF7AADMo',
+                'agenda': 'Welcome new members, Club website'
+        }
+        form=MeetingForm(data)
+        self.assertTrue(form.is_valid)
+
+    def test_MeetingForm_Invalid(self):
+        data={
+                'meetingtitle': 'Coding Club: Learn Python', 
+                'meetingdate': 'June/08/2021', 
+                'user': 'Naran', 
+                'meetingtime': '12.00pm', 
+                'location': 'https://www.youtube.com/watch?v=8leDF7AADMo',
+                'agenda': 'Welcome new members, Club website'
+        }
+        form=MeetingForm(data)
+        self.assertFalse(form.is_valid)
+
