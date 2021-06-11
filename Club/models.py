@@ -21,7 +21,7 @@ class Meeting(models.Model):
         db_table = 'Meeting'
 
 class MeetingMinute(models.Model):
-    meetingid = models.CharField(max_length=255)
+    meetingid = models.ForeignKey(Meeting, on_delete=models.CASCADE)
     attendance = models.ManyToManyField(User, blank=True)
     minutestext = models.TextField()
 
