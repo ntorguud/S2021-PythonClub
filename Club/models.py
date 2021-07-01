@@ -53,3 +53,8 @@ class Event(models.Model):
     description = models.TextField()
     userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.eventtitle
+
+    class Meta:
+        db_table = 'Event'
